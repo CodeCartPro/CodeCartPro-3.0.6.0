@@ -1,0 +1,33 @@
+name: PHP syntax (static)
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Syntax check PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.1', '8.2', '8.3', '8.4', '8.5']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          tools: none
+      - name: Validate source package layout
+        run: php tools/release_check.php
+      - name: Check PHP file syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          find upload tools -type f -name '*.php' -print0 | while IFS= read -r -d '' path; do
+            php -l "$path" > /dev/null || exit 1
+          done

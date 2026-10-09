@@ -1,0 +1,18 @@
+<div class="oc-search-result-list">
+  <div class="oc-search-group">
+    <strong>{{ text_customers }}</strong>
+    {% if customers %}
+      {% for customer in customers %}
+      <a href="{{ customer.url }}" class="ccp-search-rich-row">
+        <i class="fa fa-user fa-fw"></i>
+        <span class="ccp-search-rich-copy">
+          <span class="ccp-search-rich-title">{{ customer.name }}</span>
+          <small>{{ customer.email }}{% if customer.telephone %} · {{ customer.telephone }}{% endif %}</small>
+        </span>
+      </a>
+      {% endfor %}
+    {% else %}
+      <div class="oc-search-empty">{{ text_no_result }}</div>
+    {% endif %}
+  </div>
+</div>
