@@ -1,0 +1,25 @@
+{{ header }}{{ column_left }}
+<div id="content" class="cc-documents-admin"><div class="page-header"><div class="container-fluid">
+<div class="pull-right"><a href="{{ paid }}" class="btn btn-default" title="{{ text_paid }}"><i class="fa fa-lock"></i> {{ text_paid }}</a>
+{% if can_modify %}<a href="{{ add }}" class="btn btn-primary" title="{{ button_add }}"><i class="fa fa-plus"></i> {{ button_add }}</a>{% endif %}</div>
+<h1>{{ heading_title }}</h1><p class="text-muted">{{ text_help }}</p></div></div>
+<div class="container-fluid">
+{% if success %}<div class="alert alert-success">{{ success }}</div>{% endif %}
+{% if error_warning %}<div class="alert alert-danger">{{ error_warning }}</div>{% endif %}
+<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title"><i class="fa fa-file-pdf-o"></i> {{ text_list }}</h3></div><div class="panel-body">
+<form action="index.php" method="get" class="form-inline" style="margin-bottom:15px;"><input type="hidden" name="route" value="catalog/public_document"><input type="hidden" name="user_token" value="{{ user_token }}"><div class="form-group"><input type="text" class="form-control" name="filter_name" value="{{ filter_name }}" placeholder="{{ entry_search }}"></div> <button type="submit" class="btn btn-primary" title="{{ button_search }}"><i class="fa fa-search"></i> {{ button_search }}</button></form>
+<form id="form-documents" action="{{ delete }}" method="post"><div class="table-responsive"><table class="table table-bordered table-hover cc-documents-table">
+<thead><tr style="border-top:3px solid #0057d9;"><th style="width:32px;"><input type="checkbox" onclick="$('#form-documents input[name*=\'selected\']').prop('checked',this.checked)"></th>
+<th><a href="{{ sort_name }}">{{ column_name }}</a></th>
+<th class="text-right"><a href="{{ sort_downloads }}">{{ column_downloads }}</a></th><th class="text-right">{{ column_30d }}</th><th>{{ column_last }}</th><th class="text-right"><a href="{{ sort_date }}">{{ column_date }}</a></th><th class="text-right" style="min-width:116px;">{{ column_action }}</th></tr></thead>
+<tbody>{% for item in rows %}<tr><td><input type="checkbox" name="selected[]" value="{{ item.document_id }}"></td>
+<td><strong>{{ item.title }}</strong><div class="text-muted small">{{ item.original_name }}</div></td>
+
+<td class="text-right">{{ item.download_count }}</td><td class="text-right">{{ item.downloads_30d }}</td><td>{{ item.last_download ? item.last_download : '—' }}</td>
+<td class="text-right">{{ item.date_added }}</td><td class="text-right"><div style="display:inline-flex;gap:4px;white-space:nowrap;">
+{% if item.status %}<button type="button" class="btn btn-default btn-sm" title="{{ button_copy }}" data-url="{{ item.href }}" onclick="if(navigator.clipboard){navigator.clipboard.writeText(this.getAttribute('data-url'));}else{window.prompt('Copy link:',this.getAttribute('data-url'));}"><i class="fa fa-copy"></i></button>{% endif %}
+<a class="btn btn-primary btn-sm" title="{{ button_edit }}" href="{{ item.edit }}"><i class="fa fa-pencil"></i></a></div></td></tr>
+{% else %}<tr><td colspan="7" class="text-center">{{ text_empty }}</td></tr>{% endfor %}</tbody></table></div>
+{% if can_modify %}<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('{{ text_confirm }}')" title="{{ button_delete }}"><i class="fa fa-trash"></i> {{ button_delete }}</button>{% endif %}
+</form><div class="row"><div class="col-sm-6">{{ pagination }}</div><div class="col-sm-6 text-right">{{ results }}</div></div>
+</div></div></div></div>{{ footer }}

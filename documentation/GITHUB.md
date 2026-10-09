@@ -1,4 +1,4 @@
-# Publish source to GitHub — Build 2.0.4
+# Publish source to GitHub — Build 2.0.6
 
 [Українська](GITHUB.uk.md) · [All guides](README.md) · [Community](https://t.me/+tUZNEgY3aUk4MGIy)
 

@@ -1,4 +1,4 @@
-# Документація CodeCart PRO — Build 2.0.4
+# Документація CodeCart PRO — Build 2.0.8
 
 [English](README.md) · [Проєкт](../README.uk.md) · [Приєднатися до спільноти CodeCart PRO](https://t.me/+tUZNEgY3aUk4MGIy)
 

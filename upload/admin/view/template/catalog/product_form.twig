@@ -29,6 +29,7 @@
             <li><a href="#tab-extra" data-toggle="tab">{{ tab_extra }}</a></li>
             <li><a href="#tab-data" data-toggle="tab">{{ tab_data }}</a></li>
             <li><a href="#tab-links" data-toggle="tab">{{ tab_links }}</a></li>
+            <li><a href="#tab-public-documents" data-toggle="tab"><i class="fa fa-file-text-o"></i> {{ tab_public_documents }}</a></li>
             <li><a href="#tab-attribute" data-toggle="tab">{{ tab_attribute }}</a></li>
             <li><a href="#tab-option" data-toggle="tab">{{ tab_option }}</a></li>
             <li><a href="#tab-purchase-blocks" data-toggle="tab">{{ tab_purchase_blocks }}</a></li>
@@ -508,6 +509,23 @@
                       <input type="hidden" name="product_related_article[]" value="{{ product_related_article.article_id }}" />
                     </div>
                     {% endfor %}</div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-public-documents">
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-public-document">{{ entry_public_document }}</label>
+                <div class="col-sm-10">
+                  <input type="hidden" name="public_document_links_present" value="1">
+                  <input type="text" name="public_document_search" value="" placeholder="{{ entry_public_document }}" id="input-public-document" class="form-control" autocomplete="off">
+                  <div id="product-public-documents" class="well well-sm" style="min-height:70px;max-height:200px;overflow-y:auto;">
+                  {% for doc in product_public_documents %}
+                    <div id="product-public-document{{ doc.document_id }}" class="cc-product-public-document"><i class="fa fa-minus-circle" role="button" tabindex="0" title="{{ text_unlink_public_document }}" aria-label="{{ text_unlink_public_document }}" style="cursor:pointer;"></i> {{ doc.name }}
+                      <input type="hidden" name="product_public_document[]" value="{{ doc.document_id }}">
+                    </div>
+                  {% endfor %}
+                  </div>
+                  <p class="help-block">{{ help_public_document }} <a href="{{ public_document_manager_url }}" target="_blank" rel="noopener">{{ text_manage_public_documents }}</a></p>
                 </div>
               </div>
             </div>
@@ -1307,6 +1325,29 @@
 
   $('#product-filter').delegate('.fa-minus-circle', 'click', function() {
 	  $(this).parent().remove();
+  });
+
+  // Public files: independent of paid digital download permissions and relationships.
+  $('#input-public-document').autocomplete({
+    source: function(request, response) {
+      $.ajax({url:'index.php?route=catalog/public_document/autocomplete&user_token={{ user_token }}&filter_name='+encodeURIComponent(request),dataType:'json',success:function(items){
+        response($.map(items,function(item){return {label:item.name,value:item.document_id};}));
+      }});
+    },
+    select: function(item) {
+      $('#input-public-document').val('');
+      var id=parseInt(item.value,10);
+      if (!id || $('#product-public-document'+id).length) return;
+      var $row=$('<div/>',{'id':'product-public-document'+id,'class':'cc-product-public-document'});
+      $('<i/>',{'class':'fa fa-minus-circle','role':'button','tabindex':'0','title':'{{ text_unlink_public_document }}','aria-label':'{{ text_unlink_public_document }}'}).css('cursor','pointer').appendTo($row);
+      $row.append(document.createTextNode(' '+item.label));
+      $('<input/>',{'type':'hidden','name':'product_public_document[]','value':id}).appendTo($row);
+      $('#product-public-documents').append($row);
+    }
+  });
+  $('#product-public-documents').on('click keydown','.fa-minus-circle',function(e){
+    if (e.type==='keydown' && e.key!=='Enter' && e.key!==' ') return;
+    e.preventDefault();$(this).closest('.cc-product-public-document').remove();
   });
 
   // Downloads

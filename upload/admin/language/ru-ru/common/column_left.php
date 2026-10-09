@@ -90,3 +90,5 @@ $_['text_blog_setting'] = 'Настройки блога';
 $_['text_blog'] = 'Блог';
 
 $_['text_lost_urls'] = 'Потерянные адреса (404)';
+
+$_['text_public_document'] = 'Публичные документы';

@@ -1,4 +1,4 @@
-# Compatibility — Build 2.0.4
+# Compatibility — Build 2.0.6
 
 [Українська](COMPATIBILITY.uk.md) · [All guides](README.md) · [Community](https://t.me/+tUZNEgY3aUk4MGIy)
 

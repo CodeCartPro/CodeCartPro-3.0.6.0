@@ -1,4 +1,4 @@
-# Втрачені URL (404) — Build 2.0.4
+# Втрачені URL (404) — Build 2.0.6
 
 [English](LOST_URLS.md) · [Усі інструкції](README.uk.md) · [Спільнота](https://t.me/+tUZNEgY3aUk4MGIy)
 

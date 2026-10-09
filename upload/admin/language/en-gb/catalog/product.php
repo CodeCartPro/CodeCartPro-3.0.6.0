@@ -250,3 +250,9 @@ $_['text_purchase_block_choose_form'] = '— Choose an existing form / block —
 $_['error_meta_h1'] = 'HTML H1 tag must be between 0 and 255 characters!';
 $_['text_action'] = 'Action';
 $_['js_purchase_presets_json'] = '{}';
+
+$_['tab_public_documents'] = 'Documents';
+$_['entry_public_document'] = 'Public documents';
+$_['help_public_document'] = 'Select previously uploaded documents by name. These are free files, separate from paid digital downloads.';
+$_['text_manage_public_documents'] = 'Manage documents';
+$_['text_unlink_public_document'] = 'Remove document link';

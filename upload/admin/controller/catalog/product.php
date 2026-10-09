@@ -30,6 +30,7 @@ class ControllerCatalogProduct extends Controller {
 			$this->normalizePurchaseBlocksPost();
 
 			$product_id = (int)$this->model_catalog_product->addProduct($this->request->post);
+            $this->savePublicDocumentLinks($product_id);
 			$this->queueRelationRefresh($product_id);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -136,6 +137,7 @@ class ControllerCatalogProduct extends Controller {
 			$this->normalizePurchaseBlocksPost();
 
 			$this->model_catalog_product->editProduct($this->request->get['product_id'], $this->request->post);
+            $this->savePublicDocumentLinks((int)$this->request->get['product_id']);
 			$this->queueRelationRefresh((int)$this->request->get['product_id']);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -1010,6 +1012,17 @@ class ControllerCatalogProduct extends Controller {
 		$this->request->post['purchase_blocks_json'] = $clean;
 	}
 
+    private function savePublicDocumentLinks($product_id) {
+        // Never activate document tables or change links during unrelated product saves.
+        if (!$this->config->get('codecart_file_stats_status') || !isset($this->request->post['public_document_links_present'])) return;
+        if ((string)$this->config->get('codecart_public_documents_schema_version') !== '2.0.8') {
+            $this->load->model('catalog/public_document');
+            $this->model_catalog_public_document->install();
+        }
+        $this->load->model('catalog/public_document');
+        $this->model_catalog_public_document->syncProduct((int)$product_id, (array)($this->request->post['product_public_document']??array()));
+    }
+
 	protected function getForm() {
 		$data['button_generate_seo_url'] = $this->language->get('button_generate_seo_url');
 		$data['text_form'] = !isset($this->request->get['product_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
@@ -1743,6 +1756,24 @@ class ControllerCatalogProduct extends Controller {
 			$product_downloads = array();
 		}
 
+        if ($this->config->get('codecart_file_stats_status') && (string)$this->config->get('codecart_public_documents_schema_version') !== '2.0.8' && $this->user->hasPermission('modify','catalog/product')) {
+            $this->load->model('catalog/public_document');
+            $this->model_catalog_public_document->install();
+        }
+        $data['tab_public_documents'] = $this->language->get('tab_public_documents');
+        $data['entry_public_document'] = $this->language->get('entry_public_document');
+        $data['help_public_document'] = $this->language->get('help_public_document');
+        $data['text_manage_public_documents'] = $this->language->get('text_manage_public_documents');
+        $data['public_document_manager_url'] = $this->url->link('catalog/public_document','user_token='.$this->session->data['user_token'],true);
+        $data['product_public_documents'] = array();
+        if ($this->config->get('codecart_file_stats_status')) {
+            $this->load->model('catalog/public_document');
+            if (isset($this->request->post['public_document_links_present'])) {
+                $data['product_public_documents'] = $this->model_catalog_public_document->selectedByIds($this->request->post['product_public_document']??array());
+            } elseif (!empty($this->request->get['product_id'])) {
+                $data['product_public_documents'] = $this->model_catalog_public_document->selectedForProduct((int)$this->request->get['product_id']);
+            }
+        }
 		$data['product_downloads'] = array();
 
 		foreach ($product_downloads as $download_id) {

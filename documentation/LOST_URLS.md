@@ -1,4 +1,4 @@
-# Lost URLs (404) — Build 2.0.4
+# Lost URLs (404) — Build 2.0.6
 
 [Українська](LOST_URLS.uk.md) · [All guides](README.md) · [Community](https://t.me/+tUZNEgY3aUk4MGIy)
 

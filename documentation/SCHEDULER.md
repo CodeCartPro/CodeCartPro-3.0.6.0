@@ -1,4 +1,4 @@
-# Scheduler — Build 2.0.4
+# Scheduler — Build 2.0.6
 
 [Українська](SCHEDULER.uk.md) · [All guides](README.md) · [Community](https://t.me/+tUZNEgY3aUk4MGIy)
 

@@ -1,4 +1,4 @@
-# Demo presentation — Build 2.0.4
+# Demo presentation — Build 2.0.6
 
 [Українська](DEMO.uk.md) · [All guides](README.md)
 

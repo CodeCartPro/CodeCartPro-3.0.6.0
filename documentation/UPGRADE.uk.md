@@ -1,4 +1,4 @@
-# Оновлення та відновлення — Build 2.0.4
+# Оновлення та відновлення — Build 2.0.6
 
 [English](UPGRADE.md) · [Усі інструкції](README.uk.md) · [Спільнота](https://t.me/+tUZNEgY3aUk4MGIy)
 

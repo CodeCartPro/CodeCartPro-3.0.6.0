@@ -216,3 +216,9 @@ $_['text_purchase_block_choose_form'] = '— Выберите созданную
 $_['error_meta_h1'] = 'HTML-тег H1 должен содержать от 0 до 255 символов!';
 $_['text_action'] = 'Действие';
 $_['js_purchase_presets_json'] = '{}';
+
+$_['tab_public_documents'] = 'Документы';
+$_['entry_public_document'] = 'Публичные документы';
+$_['help_public_document'] = 'Выберите ранее загруженные документы по названию. Это бесплатные файлы, не цифровые товары.';
+$_['text_manage_public_documents'] = 'Управление документами';
+$_['text_unlink_public_document'] = 'Убрать связь с документом';

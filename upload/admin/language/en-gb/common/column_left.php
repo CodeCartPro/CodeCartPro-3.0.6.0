@@ -96,3 +96,5 @@ $_['text_blog_setting'] = 'Blog settings';
 $_['text_blog'] = 'Blog';
 
 $_['text_lost_urls'] = 'Lost URLs (404)';
+
+$_['text_public_document'] = 'Public Documents';

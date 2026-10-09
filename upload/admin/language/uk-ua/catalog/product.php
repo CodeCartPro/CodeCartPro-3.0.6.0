@@ -264,3 +264,9 @@ $_['entry_purchase_block_form_hover_bg'] = 'Фон при наведенні';
 $_['entry_purchase_block_enabled'] = 'Показувати блок';
 $_['button_purchase_block_add_existing_form'] = 'Додати вибрану';
 $_['text_purchase_block_choose_form'] = '— Виберіть створену форму / блок —';
+
+$_['tab_public_documents'] = 'Документи';
+$_['entry_public_document'] = 'Публічні документи';
+$_['help_public_document'] = 'Оберіть уже завантажені документи за назвою. Це безкоштовні файли, не цифрові товари.';
+$_['text_manage_public_documents'] = 'Керувати документами';
+$_['text_unlink_public_document'] = 'Прибрати зв’язок із документом';

@@ -1,4 +1,4 @@
-# CodeCart PRO 3.0.6.0 — Build 2.0.4
+# CodeCart PRO 3.0.6.0 — Build 2.0.8
 
 CodeCart PRO — платформа електронної комерції на основі OpenCart/ocStore 3.x із темою CodeCart Theme, адаптерами сумісності та необов'язковим журналом втрачених URL.
 
