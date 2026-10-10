@@ -119,3 +119,15 @@ The recommended extension-compatibility target stated in the supplied documentat
 
 - Replaced all CodeCart logo and theme preview assets with the corrected official CodeCart PRO logo provided by the user.
 - Updated admin logo, installer logo, default fallback logo, catalog brand images, and the theme preview image used in store settings.
+
+## Build 2.1.6
+
+- Fixed a fatal Twig parsing error in the admin file manager introduced by inline CSS containing an unintended Twig comment opener.
+- Moved the file manager selection-footer styles into the admin stylesheet, preserving responsive layout without Twig conflicts.
+- Updated the administrator CSS cache version and integrity records.
+
+## Build 2.1.7
+
+- Theme preview in Stores / Settings now shows a genuine screenshot of the demo storefront, not the CodeCart PRO brand logo. Theme list stays text-only.
+- Theme preview URLs include the image modification timestamp to prevent a stale cached picture.
+- Retains the Twig file manager unclosed-comment fix from Build 2.1.6 and the official CodeCart PRO logo elsewhere.
