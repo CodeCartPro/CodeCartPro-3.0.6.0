@@ -96,3 +96,26 @@ This entry identifies the supplied production archive `CodeCart-3.0.6-production
 A change-by-change comparison against a previous published CodeCart build has not been supplied and has not been verified. Avoid claiming individual fixes, migrations or performance improvements without a tested comparison.
 
 The recommended extension-compatibility target stated in the supplied documentation is PHP 8.1–8.3; the core describes support for PHP 8.4/8.5. Individual third-party components must be tested separately.
+
+## Build 2.1.2
+
+- Demo homepage slideshow: all four default banner images are now neutral CodeCart-style technology banners without brand logos, keeping the existing file names and installer links.
+
+## Build 2.1.3
+
+- Restored the classic default homepage slideshow banner images from the earlier demo set.
+- Product page gallery thumbnails now use a horizontal carousel/scroll strip on mobile and desktop instead of wrapping into a tile grid.
+- The product gallery shows navigation arrows only when the thumbnails overflow the available width.
+- File manager modal footer updated: the multi-select Choose button is aligned cleanly with pagination and behaves better on narrow screens.
+
+## Build 2.1.4
+
+- Extensions > Themes: removed the preview image from the template list so only the theme name is shown there.
+- Settings > Store / Main settings: kept the theme preview image and replaced it with the new CodeCart brand banner.
+- Replaced CodeCart logo/banner assets across admin, installer, default logo assets, and demo brand images with the new logo.
+- Homepage demo slideshow banners restored to the four generated CodeCart demo banners (replacing the legacy set).
+
+## Build 2.1.5
+
+- Replaced all CodeCart logo and theme preview assets with the corrected official CodeCart PRO logo provided by the user.
+- Updated admin logo, installer logo, default fallback logo, catalog brand images, and the theme preview image used in store settings.
