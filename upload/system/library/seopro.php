@@ -579,8 +579,14 @@ class SeoPro {
             return;
         }
 
-        if (empty($this->request->get['route']))
+        if (empty($this->request->get['route'])) {
+            // An unresolved nonempty SEO path is not the homepage: never
+            // redirect a missing entity to / or /<language>/ with HTTP 301.
+            if (!empty($this->request->get['_route_'])) {
+                return;
+            }
             $this->request->get['route'] = 'common/home';
+        }
 
 
         $uri = isset($this->request->server['REQUEST_URI']) ? (string)$this->request->server['REQUEST_URI'] : '/';
@@ -617,6 +623,24 @@ class SeoPro {
         $url = str_replace('&amp;', '&', $host . ltrim($uri, '/'));
         $seo = str_replace('&amp;', '&', $this->url->link($route, $this->getQueryString(array('_route_', 'route')), $is_https));
 
+        // A missing SEO mapping must never canonicalize a product/category to
+        // the store root. This also prevents accidental 301s into a language
+        // homepage when a third-party modification changes routing order.
+        if ($route !== 'common/home') {
+            $seo_path = (string)parse_url($seo, PHP_URL_PATH);
+            $base_path = isset($parts['path']) ? '/' . trim((string)$parts['path'], '/') : '/';
+            $base_path = rtrim($base_path, '/') . '/';
+            $relative_path = $seo_path;
+            if (strpos($seo_path, $base_path) === 0) {
+                $relative_path = substr($seo_path, strlen($base_path));
+            }
+            $relative_path = trim($relative_path, '/');
+            $prefix = trim((string)$this->config->get('codecart_language_prefix_current'), '/');
+            if ($relative_path === '' || ($prefix !== '' && $relative_path === $prefix)) {
+                return;
+            }
+        }
+
         // Defensive root guard: never redirect '/' to the same origin merely
         // because one representation omitted the syntactic trailing slash.
         if ($uri === '/' && rtrim(rawurldecode($url), '/') === rtrim(rawurldecode($seo), '/')) {
@@ -635,7 +659,12 @@ class SeoPro {
 
     private function detectLanguage() {
 
-        if ($this->ajax || $this->config->get('codecart_language_prefix_explicit'))
+        // Native language prefixes own locale selection even on the default
+        // unprefixed domain root. Never override them using a translated slug.
+        // Older LangDir stores similarly delegate locale selection to LangDir.
+        if ($this->ajax || $this->config->get('codecart_language_prefix_enabled')
+            || $this->config->get('codecart_language_prefix_explicit')
+            || $this->config->get('langdir_status'))
             return;
 
         $request_language_id = null;

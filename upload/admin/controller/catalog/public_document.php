@@ -52,6 +52,9 @@ class ControllerCatalogPublicDocument extends Controller {
         $data['delete']=$this->url->link('catalog/public_document/delete',$token,true);
         $data['paid']=$this->url->link('catalog/download',$token,true);
         $data['can_modify']=$this->allowed('modify');
+        $data['dashboard_url']=$this->url->link('common/dashboard', $token, true);
+        $data['current_url']=$this->url->link('catalog/public_document', $token, true);
+        $data['text_home']=$this->language->get('text_home');
         $pages=new Pagination();$pages->total=$total;$pages->page=$page;$pages->limit=$limit;
         $pages->url=$this->url->link('catalog/public_document',$token.$filter_param.'&sort='.$sort.'&order='.$order.'&page={page}',true);
         $data['pagination']=$pages->render();
@@ -104,6 +107,8 @@ class ControllerCatalogPublicDocument extends Controller {
         $data['targets']=array(); foreach (array('none','product','category') as $code) $data['targets'][$code]=$this->language->get('target_'.$code);
         $data['action']=$this->url->link('catalog/public_document/form','user_token='.$this->session->data['user_token'].($id?'&document_id='.$id:''),true);
         $data['cancel']=$this->url->link('catalog/public_document','user_token='.$this->session->data['user_token'],true);
+        $data['dashboard_url']=$this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true);
+        $data['text_home']=$this->language->get('text_home');
         $data['can_modify']=$this->allowed('modify');
         $data['user_token']=$this->session->data['user_token'];
         $data['target_name']='';

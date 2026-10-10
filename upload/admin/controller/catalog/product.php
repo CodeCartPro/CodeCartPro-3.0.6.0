@@ -1164,6 +1164,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
 		$this->document->addStyle('view/stylesheet/codecart-purchase-blocks.css?v=3.0.6.0');
+		$this->document->addStyle('view/stylesheet/codecart-product-files.css?v=2.0.9');
 		$this->document->addScript('view/javascript/codecart-purchase-blocks.js?v=3.0.6.0');
 		$this->load->model('design/form');
 		$data['available_forms'] = $this->model_design_form->getFormOptions();
@@ -1765,6 +1766,11 @@ class ControllerCatalogProduct extends Controller {
         $data['help_public_document'] = $this->language->get('help_public_document');
         $data['text_manage_public_documents'] = $this->language->get('text_manage_public_documents');
         $data['public_document_manager_url'] = $this->url->link('catalog/public_document','user_token='.$this->session->data['user_token'],true);
+        $data['public_document_add_url'] = $this->url->link('catalog/public_document/form', 'user_token=' . $this->session->data['user_token'], true);
+        $data['download_add_url'] = $this->url->link('catalog/download/add', 'user_token=' . $this->session->data['user_token'], true);
+        $data['button_add'] = $this->language->get('button_add');
+        $data['button_remove'] = $this->language->get('button_remove');
+        $data['text_unlink_public_document'] = $this->language->get('text_unlink_public_document');
         $data['product_public_documents'] = array();
         if ($this->config->get('codecart_file_stats_status')) {
             $this->load->model('catalog/public_document');

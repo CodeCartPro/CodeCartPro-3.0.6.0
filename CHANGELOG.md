@@ -1,3 +1,18 @@
+# CodeCart 3.0.6 (2026-10-10)
+
+- Product list: removed two bulk extra-tab controls from the toolbar. Existing per-product extra tabs, saved content, endpoints, and storefront behavior remain unchanged.
+- Category carousel: use matching, single-chevron previous/next icons from the bundled Font Awesome 4 set. Category corner-link icon also uses the bundled icon family.
+- Expanded English and Ukrainian project descriptions and browser-based Codespaces publishing instructions. Public project name displays CodeCart 3.0.6 without internal build labels.
+- Refreshed the core file-integrity manifest to the actual packaged content, including changes already present in the prior update.
+
+# CodeCart PRO 3.0.6.0 — Production Build 2.0.9 (2026-10-10)
+
+- Fixed homepage hreflang: native language folder roots always end with /, regardless of SeoPro's trailing slash setting for content pages.
+- SeoPro delegates language detection to native URL-prefix routing and to enabled LangDir, preventing locale changes from unrelated SEO keywords.
+- SeoPro no longer canonicalizes unresolved paths or missing entity SEO URLs to the homepage.
+- Product edit: removed the separate Documents tab; free public documents now appear directly beneath paid Downloads in Links, with matching add/remove controls and safe autocomplete rendering.
+- Harmonized the public document creation form and manager actions with Downloads. No changes to stored documents, paid downloads or access restrictions.
+
 # Changelog
 
 # CodeCart PRO 3.0.6.0 — Production Build 2.0.8 (2026-10-09)
