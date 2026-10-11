@@ -147,3 +147,11 @@ The recommended extension-compatibility target stated in the supplied documentat
 - A controlled lookup of default-language aliases supports legacy cross-language product links without mixing target-language SEO cache entries.
 - Keep unknown SEO URLs as 404; skip language canonicalization for POST, AJAX, API, payment and feed routes.
 - Add automated regression checks for legacy language links, generated product URLs and native startup language selection.
+
+## Build 2.2.0
+
+- System notifications: replace truncated 200-item listing with paginated status-filtered history.
+- Dismissing recurring notices now persists until the underlying issue changes; the notice reappears when a resolved condition recurs.
+- Clear-read no longer allows unchanged recurring warnings to reappear immediately.
+- AJAX actions now show permission, network and server errors rather than silently failing.
+- Added an offline notification service regression test and tri-language interface labels.

@@ -24,9 +24,8 @@ $_['text_notice_invalid_catalog_url'] = 'Не вдалося визначити 
 
 $_['text_delete'] = 'Видалити';
 $_['text_clear_read'] = 'Очистити прочитані';
-$_['text_confirm_delete'] = 'Видалити це системне сповіщення?';
-$_['text_confirm_clear'] = 'Видалити всі прочитані та вирішені сповіщення?';
-
+$_['text_confirm_delete'] = 'Приховати це сповіщення до зміни його стану?';
+$_['text_confirm_clear'] = 'Приховати всі прочитані та вирішені сповіщення?';
 $_['text_health_db_migration_history'] = 'Історія міграцій ядра';
 $_['text_health_db_migration_history_message'] = 'Попередження зникає після успішної міграції цієї збірки. Якщо версія схеми актуальна, дій не потрібно.';
 $_['text_health_db_schema_version'] = 'Версія схеми ядра';
@@ -77,3 +76,13 @@ $_['text_health_value_missing'] = 'відсутнє';
 $_['text_health_value_never'] = 'ще не запускався';
 $_['text_health_value_not_configured'] = 'не налаштовано';
 $_['text_health_value_check_failed'] = 'перевірка не вдалася';
+
+$_['text_status_all'] = 'Усі';
+$_['text_status_unread'] = 'Нові';
+$_['text_status_read'] = 'Прочитані';
+$_['text_status_resolved'] = 'Вирішені';
+$_['text_page'] = 'Сторінка';
+$_['text_previous'] = 'Попередня сторінка';
+$_['text_next'] = 'Наступна сторінка';
+$_['error_action'] = 'Не вдалося виконати дію. Оновіть сторінку або перевірте права доступу.';
+$_['error_network'] = 'Помилка запиту до сервера. Перевірте з’єднання та журнал помилок.';
