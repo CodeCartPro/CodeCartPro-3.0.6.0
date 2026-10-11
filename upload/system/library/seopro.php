@@ -479,8 +479,24 @@ class SeoPro {
                 ? "LCASE(keyword) = '" . $keyword_sql . "'"
                 : "keyword = '" . $keyword_sql . "'";
 
+            $legacy_fallback_used = false;
             $_query = $this->db->query("SELECT query FROM " . DB_PREFIX . "seo_url WHERE " . $keyword_condition . " AND store_id = '" . $store_id . "' AND language_id = '" . (int)$language_id . "' ORDER BY seo_url_id DESC LIMIT 1");
             $query = !empty($_query->row) ? (string)$_query->row['query'] : null;
+
+            // Legacy links may carry the default-language slug with
+            // ?language=another-code. Decode that alias in the default language,
+            // but keep the requested target language for the canonical rewrite.
+            if (($query === null || $query === '') && $this->config->get('codecart_language_legacy_query')
+                && !$this->config->get('codecart_language_prefix_route_matched')) {
+                $defaultCode = (string)$this->config->get('config_language');
+                $defaultLanguage = $this->db->query("SELECT language_id FROM " . DB_PREFIX . "language WHERE code = '" . $this->db->escape($defaultCode) . "' AND status = '1' LIMIT 1");
+                if ($defaultLanguage->num_rows && (int)$defaultLanguage->row['language_id'] !== (int)$language_id) {
+                    $defaultId = (int)$defaultLanguage->row['language_id'];
+                    $_query = $this->db->query("SELECT query FROM " . DB_PREFIX . "seo_url WHERE " . $keyword_condition . " AND store_id = '" . $store_id . "' AND language_id = '" . $defaultId . "' ORDER BY seo_url_id DESC LIMIT 1");
+                    $query = !empty($_query->row) ? (string)$_query->row['query'] : null;
+                    $legacy_fallback_used = $query !== null && $query !== '';
+                }
+            }
 
             // In native prefix mode an unprefixed path belongs to the configured
             // default language. Resolve against it before returning a false 404.
@@ -512,7 +528,7 @@ class SeoPro {
                 }
             }
 
-            if ($query !== null && $query !== '') {
+            if ($query !== null && $query !== '' && !$legacy_fallback_used) {
                 if (!isset($this->queries[$lookup_keyword])) $this->queries[$lookup_keyword] = array();
                 if (!isset($this->queries[$lookup_keyword][$store_id])) $this->queries[$lookup_keyword][$store_id] = array();
                 $this->queries[$lookup_keyword][$store_id][$language_id] = $query;
@@ -621,7 +637,7 @@ class SeoPro {
         $host .= '/';
 
         $url = str_replace('&amp;', '&', $host . ltrim($uri, '/'));
-        $seo = str_replace('&amp;', '&', $this->url->link($route, $this->getQueryString(array('_route_', 'route')), $is_https));
+        $seo = str_replace('&amp;', '&', $this->url->link($route, $this->getQueryString($this->config->get('codecart_language_legacy_query') ? array('_route_', 'route', 'language') : array('_route_', 'route')), $is_https));
 
         // A missing SEO mapping must never canonicalize a product/category to
         // the store root. This also prevents accidental 301s into a language

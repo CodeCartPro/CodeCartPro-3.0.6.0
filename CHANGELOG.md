@@ -139,3 +139,11 @@ The recommended extension-compatibility target stated in the supplied documentat
 - Localized product gallery navigation, CodeCart editor tools, modal tooltips and AJAX validation messages.
 - Back-in-stock email notifications now use dedicated per-language resources for Ukrainian, English and Russian recipients.
 - Added a portable i18n CLI audit and multilingual QA documentation.
+
+## Build 2.1.9
+
+- Native language URL routing: interpret recognized legacy `?language=code` selectors only when native language folders are active; physical language prefixes still take precedence.
+- SeoPro and standard SEO links: canonicalize old catalog URLs to the corresponding localized paths without the obsolete parameter, preserving supported query arguments and avoiding redirect chains.
+- A controlled lookup of default-language aliases supports legacy cross-language product links without mixing target-language SEO cache entries.
+- Keep unknown SEO URLs as 404; skip language canonicalization for POST, AJAX, API, payment and feed routes.
+- Add automated regression checks for legacy language links, generated product URLs and native startup language selection.
