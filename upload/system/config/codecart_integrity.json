@@ -420,7 +420,7 @@
         "system/library/codecart/src/SpamService.php": "9a27787843dde028d10d7c44cb8361ec9c1d5b66d439a5ca78595e1225bea766",
         "system/library/codecart/src/StyleCompiler.php": "f8b91156caafc69c1e0cc25ea77f8f23e7d76b9b2b6db942a7f5af5c9ce56957",
         "system/library/codecart/src/SystemMailer.php": "8b4854635009bff4f8759e05a950a618af61f64492d577f1ddf880bf06ed0551",
-        "system/library/codecart/src/SystemNotification.php": "167d335f3df571e0af7c1563f1a2fa8c06f576cd9dffabe3f893c78c184ad53e",
+        "system/library/codecart/src/SystemNotification.php": "610add32075a86817f5342fc9ddc75650a21bdd59874d96b8db18fc15577af14",
         "system/library/codecart/src/TaxDisplay.php": "0a84561119cab2c08f5feb7f627a96bcbee59a79408078575f82e731934e9767",
         "system/library/codecart/src/TotpManager.php": "f91a1055c7f98beb3430bcda563c6c7f6410e954eb379b0f91399be0f8ebd965",
         "system/library/codecart/src/Unishop2Compatibility.php": "7e3af4f9fe1ca6d7e2d5306a52e88b90bb02fb515f7c2752c9cc3cd4633a7338",

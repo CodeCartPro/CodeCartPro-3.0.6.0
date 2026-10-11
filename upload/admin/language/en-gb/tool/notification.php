@@ -86,3 +86,6 @@ $_['text_previous'] = 'Previous page';
 $_['text_next'] = 'Next page';
 $_['error_action'] = 'Action failed. Reload the page or check your permissions.';
 $_['error_network'] = 'Server request failed. Check your connection and the error log.';
+$_['text_status_dismissed'] = 'Archived';
+$_['text_archive_help'] = 'Archived notifications are hidden from the active list, but remain here for review. They can reappear as new when a resolved issue occurs again.';
+$_['error_session'] = 'Your session has expired or the login token is invalid. Sign in again, then retry.';

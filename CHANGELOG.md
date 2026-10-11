@@ -155,3 +155,10 @@ The recommended extension-compatibility target stated in the supplied documentat
 - Clear-read no longer allows unchanged recurring warnings to reappear immediately.
 - AJAX actions now show permission, network and server errors rather than silently failing.
 - Added an offline notification service regression test and tri-language interface labels.
+
+## Build 2.2.1
+
+- Fixed double HTML escaping of admin notification URLs. Filter pagination and AJAX actions now pass a correct `user_token` without bypassing permission checks.
+- Added an Archived filter for dismissed notifications and preserved resolved notification history instead of silently deleting it.
+- Removed automatic 30-day notification history purge from the security cron task.
+- Added localized session-expired errors for notifications on all three supported languages.

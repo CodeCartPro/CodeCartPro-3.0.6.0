@@ -6,7 +6,7 @@ class ControllerToolNotification extends Controller {
 
         $service = new \CodeCart\Core\SystemNotification($this->registry);
         $status = isset($this->request->get['status']) ? (string)$this->request->get['status'] : 'all';
-        if (!in_array($status, array('all', 'unread', 'read', 'resolved'), true)) { $status = 'all'; }
+        if (!in_array($status, array('all', 'unread', 'read', 'resolved', 'dismissed'), true)) { $status = 'all'; }
         $page = max(1, (int)($this->request->get['page'] ?? 1));
         $pageSize = 50;
         $counts = $service->counts();
@@ -27,18 +27,18 @@ class ControllerToolNotification extends Controller {
             'text_level_critical', 'text_level_error', 'text_level_warning', 'text_level_info',
             'text_delete', 'text_clear_read', 'text_confirm_delete', 'text_confirm_clear',
             'text_status_all', 'text_status_unread', 'text_status_read', 'text_status_resolved',
-            'text_page', 'error_permission', 'error_action', 'error_network'
+            'text_page', 'text_previous', 'text_next', 'text_status_dismissed', 'text_archive_help', 'error_session', 'error_permission', 'error_action', 'error_network'
         ) as $key) { $data[$key] = $this->language->get($key); }
 
         $data['breadcrumbs'] = array(
-            array('text' => $this->language->get('text_home'), 'href' => $this->url->link('common/dashboard', 'user_token=' . $data['user_token'], true)),
-            array('text' => $this->language->get('heading_title'), 'href' => $this->url->link('tool/notification', 'user_token=' . $data['user_token'], true))
+            array('text' => $this->language->get('text_home'), 'href' => html_entity_decode($this->url->link('common/dashboard', 'user_token=' . $data['user_token'], true), ENT_QUOTES, 'UTF-8')),
+            array('text' => $this->language->get('heading_title'), 'href' => html_entity_decode($this->url->link('tool/notification', 'user_token=' . $data['user_token'], true), ENT_QUOTES, 'UTF-8'))
         );
         $data['notification_urls'] = array();
         foreach (array('read','readAll','delete','clearRead') as $action) {
-            $data['notification_urls'][$action] = $this->url->link('tool/notification/' . $action, 'user_token=' . $data['user_token'], true);
+            $data['notification_urls'][$action] = html_entity_decode($this->url->link('tool/notification/' . $action, 'user_token=' . $data['user_token'], true), ENT_QUOTES, 'UTF-8');
         }
-        $data['notification_list_url'] = $this->url->link('tool/notification', 'user_token=' . $data['user_token'], true);
+        $data['notification_list_url'] = html_entity_decode($this->url->link('tool/notification', 'user_token=' . $data['user_token'], true), ENT_QUOTES, 'UTF-8');
         $data['header'] = $this->load->controller('common/header');
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');

@@ -37,10 +37,9 @@ final class SystemNotification {
     public function resolve(string $code): void {
         if (!$this->tableExists()) { return; }
         $code = $this->db->escape(strtolower(trim($code)));
-        // Once a previously dismissed condition is fixed, discard its
-        // tombstone. If the condition recurs it deserves a new alert.
-        $this->db->query("DELETE FROM `" . DB_PREFIX . "codecart_notification` WHERE code='" . $code . "' AND status='dismissed'");
-        $this->db->query("UPDATE `" . DB_PREFIX . "codecart_notification` SET status='resolved', date_modified=NOW() WHERE code='" . $code . "' AND status NOT IN ('resolved','dismissed')");
+        // Keep the full history. A dismissed warning that is fixed becomes resolved;
+        // if it recurs, notify() reopens it because its status was resolved.
+        $this->db->query("UPDATE `" . DB_PREFIX . "codecart_notification` SET status='resolved', date_modified=NOW() WHERE code='" . $code . "' AND status!='resolved'");
     }
 
     public function unreadCount(): int {
@@ -59,21 +58,21 @@ final class SystemNotification {
     // pass cannot recreate the exact same warning. It becomes unread if its
     // message/severity changes or if it is resolved and later recurs.
     private function visibleCondition(string $status = 'all'): string {
-        if (in_array($status, array('unread', 'read', 'resolved'), true)) {
+        if (in_array($status, array('unread', 'read', 'resolved', 'dismissed'), true)) {
             return "status='" . $status . "'";
         }
         return "status IN ('unread','read','resolved')";
     }
 
     public function counts(): array {
-        $counts = array('all' => 0, 'unread' => 0, 'read' => 0, 'resolved' => 0);
+        $counts = array('all' => 0, 'unread' => 0, 'read' => 0, 'resolved' => 0, 'dismissed' => 0);
         if (!$this->tableExists()) { return $counts; }
-        $rows = $this->db->query("SELECT status, COUNT(*) AS total FROM `" . DB_PREFIX . "codecart_notification` WHERE status IN ('unread','read','resolved') GROUP BY status")->rows;
+        $rows = $this->db->query("SELECT status, COUNT(*) AS total FROM `" . DB_PREFIX . "codecart_notification` WHERE status IN ('unread','read','resolved','dismissed') GROUP BY status")->rows;
         foreach ($rows as $row) {
             $status = (string)$row['status'];
             if (isset($counts[$status])) {
                 $counts[$status] = (int)$row['total'];
-                $counts['all'] += $counts[$status];
+                if ($status !== 'dismissed') { $counts['all'] += $counts[$status]; }
             }
         }
         return $counts;
