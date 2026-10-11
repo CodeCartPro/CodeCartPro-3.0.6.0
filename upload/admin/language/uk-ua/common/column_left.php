@@ -55,7 +55,6 @@ $_['text_order_status']                = 'Статуси замовлень';
 $_['text_online']               	   = 'Відвідувачі онлайн';
 $_['text_payment']                     = 'Оплата';
 $_['text_paypal']                      = 'PayPal';
-$_['text_paypal_search']               = 'Пошук транзакції';
 $_['text_product']                     = 'Товари';
 $_['text_reports']                     = 'Звіти';
 $_['text_report_sale']                 = 'Продажі';

@@ -449,3 +449,16 @@ $_['cmp_file'] = 'Файли';
 $_['cmp_fa'] = '6.7.2 + AUTO/Core/Full + сумісність із FA4';
 $_['cmp_summernote'] = 'Summernote 0.9.1 локально';
 $_['diag_msg_sql_compat'] = 'Сумісний з OpenCart режим SQL (стандарт для модулів OpenCart/ocStore). Строгий режим вмикається налаштуванням codecart_db_strict_mode = 1.';
+
+$_['text_icon_packages'] = 'Пакети Font Awesome';
+
+$_['error_invalid_request_method'] = 'Неприпустимий метод запиту.';
+$_['error_invalid_security_token'] = 'Недійсний токен безпеки.';
+
+$_['text_extension_code'] = 'Код';
+$_['text_extension_name'] = 'Назва';
+$_['text_extension_version'] = 'Версія';
+$_['text_extension_namespace'] = 'Простір імен';
+$_['text_icon_style_solid'] = 'Суцільні';
+$_['text_icon_style_regular'] = 'Контурні';
+$_['text_icon_style_brands'] = 'Бренди';

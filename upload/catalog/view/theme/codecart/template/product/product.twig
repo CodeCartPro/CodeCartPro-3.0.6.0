@@ -26,13 +26,13 @@
             {% endif %}
             {% if images %}
             <div class="ccp-product-gallery-strip" id="ccp-product-gallery-strip">
-              <button type="button" class="ccp-product-gallery-nav ccp-product-gallery-nav--prev" aria-label="Previous images" title="Previous images"><i class="fa fa-angle-left"></i></button>
+              <button type="button" class="ccp-product-gallery-nav ccp-product-gallery-nav--prev" aria-label="{{ text_previous_images }}" title="{{ text_previous_images }}"><i class="fa fa-angle-left"></i></button>
               <div class="ccp-product-gallery-track" id="ccp-product-gallery-track">
                 {% for image in images %}
                 <div class="image-additional"><a class="thumbnail ccp-product-gallery-thumb" href="{{ image.popup }}" title="{{ heading_title }}" data-main-src="{{ image.main }}" data-popup-src="{{ image.popup }}" data-pswp-width="{{ image.width }}" data-pswp-height="{{ image.height }}"> <img src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" width="{{ image_additional_width }}" height="{{ image_additional_height }}" loading="lazy" decoding="async" /></a></div>
                 {% endfor %}
               </div>
-              <button type="button" class="ccp-product-gallery-nav ccp-product-gallery-nav--next" aria-label="Next images" title="Next images"><i class="fa fa-angle-right"></i></button>
+              <button type="button" class="ccp-product-gallery-nav ccp-product-gallery-nav--next" aria-label="{{ text_next_images }}" title="{{ text_next_images }}"><i class="fa fa-angle-right"></i></button>
             </div>
             {% endif %}
           </div>

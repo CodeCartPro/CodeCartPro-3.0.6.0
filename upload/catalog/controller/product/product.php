@@ -659,6 +659,8 @@ class ControllerProductProduct extends Controller {
 				$this->document->addStyle('catalog/view/javascript/codecart/modules/native-modules.css?v=3.0.6.0-9', 'stylesheet', 'screen', 'footer');
 				$this->document->addScript('catalog/view/javascript/codecart/modules/native-modules.js?v=3.0.6.0-7', 'footer');
 			}
+			$data['text_previous_images'] = $this->language->get('text_previous_images');
+			$data['text_next_images'] = $this->language->get('text_next_images');
 			$data['text_previous_related'] = $this->language->get('text_previous_related');
 			$data['text_next_related'] = $this->language->get('text_next_related');
 
@@ -882,7 +884,7 @@ class ControllerProductProduct extends Controller {
 
 		if ($this->request->server['REQUEST_METHOD'] !== 'POST') {
 			$this->response->setStatusCode(405);
-			$json['error'] = 'Method not allowed';
+			$json['error'] = $this->language->get('error_method_not_allowed');
 		} else {
 			$product_id = isset($this->request->post['product_id']) ? (int)$this->request->post['product_id'] : 0;
 			$quantity = isset($this->request->post['quantity']) ? max(1, (int)$this->request->post['quantity']) : 1;

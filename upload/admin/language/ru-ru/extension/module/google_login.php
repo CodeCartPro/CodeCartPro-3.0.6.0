@@ -19,3 +19,6 @@ $_['help_checkout'] = 'По умолчанию выключено, чтобы н
 $_['error_permission'] = 'У вас нет прав на изменение Google Login.';
 $_['error_credentials'] = 'Для включения нужны Google Client ID и Client Secret.';
 $_['button_show_secret'] = 'Показать / скрыть приватный ключ';
+
+// CodeCart PRO: aligned locale keys
+$_['button_copy'] = 'Копировать';

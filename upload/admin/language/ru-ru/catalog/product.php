@@ -222,3 +222,17 @@ $_['entry_public_document'] = 'Публичные документы';
 $_['help_public_document'] = 'Выберите ранее загруженные документы по названию. Это бесплатные файлы, не цифровые товары.';
 $_['text_manage_public_documents'] = 'Управление документами';
 $_['text_unlink_public_document'] = 'Убрать связь с документом';
+
+// CodeCart PRO: aligned locale keys
+$_['column_category'] = 'Категория';
+$_['column_manufacturer'] = 'Производитель';
+$_['entry_description_mini'] = 'Краткое описание:';
+$_['entry_heading'] = 'Заголовок на витрине';
+$_['entry_sticker'] = 'Промостикеры';
+$_['error_tab'] = 'Укажите название вкладки';
+$_['help_keyword'] = 'Должен быть уникальным во всей системе, без пробелов и спецсимволов';
+$_['text_benefits'] = 'Преимущества:';
+$_['text_corner0'] = 'Вверху слева';
+$_['text_corner1'] = 'Вверху справа';
+$_['text_corner2'] = 'Внизу слева';
+$_['text_corner3'] = 'Внизу справа';

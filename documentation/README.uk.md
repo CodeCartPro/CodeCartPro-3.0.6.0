@@ -21,3 +21,5 @@ CodeCart — безкоштовна система інтернет-магази
 Основний код: [CodeCartPro/CodeCartPro-3.0.6.0](https://github.com/CodeCartPro/CodeCartPro-3.0.6.0). Підтримка: [support@codecartpro.com](mailto:support@codecartpro.com). Встановлення та покращення обговорюємо у [спільноті CodeCart PRO](https://t.me/+tUZNEgY3aUk4MGIy).
 
 [Демонстрація вітрини та доступ до адмінпанелі](DEMO.uk.md)
+
+Перевірка перекладів: [Багатомовність та правила локалізації](I18N_QA.uk.md).

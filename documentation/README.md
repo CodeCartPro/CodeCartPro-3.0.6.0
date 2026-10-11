@@ -21,3 +21,5 @@ CodeCart is a free, open-source online store CMS with an adaptive theme, native 
 Canonical source: [CodeCartPro/CodeCartPro-3.0.6.0](https://github.com/CodeCartPro/CodeCartPro-3.0.6.0). Support: [support@codecartpro.com](mailto:support@codecartpro.com). Discuss installation and improvements in the [CodeCart PRO community](https://t.me/+tUZNEgY3aUk4MGIy).
 
 [Demo storefront and administrator access](DEMO.md)
+
+Multilingual QA: [Language consistency and translation rules](I18N_QA.md).

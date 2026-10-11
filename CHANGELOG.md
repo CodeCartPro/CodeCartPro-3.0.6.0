@@ -131,3 +131,11 @@ The recommended extension-compatibility target stated in the supplied documentat
 - Theme preview in Stores / Settings now shows a genuine screenshot of the demo storefront, not the CodeCart PRO brand logo. Theme list stays text-only.
 - Theme preview URLs include the image modification timestamp to prevent a stale cached picture.
 - Retains the Twig file manager unclosed-comment fix from Build 2.1.6 and the official CodeCart PRO logo elsewhere.
+
+## Build 2.1.8
+
+- Normalized active Ukrainian, English and Russian language keys across admin, storefront and installer; preserved legacy optional extension files without creating fictitious controllers.
+- Added and aligned 458 English and 443 Russian active language entries, eliminated duplicate definitions, and retained formatting parameter compatibility.
+- Localized product gallery navigation, CodeCart editor tools, modal tooltips and AJAX validation messages.
+- Back-in-stock email notifications now use dedicated per-language resources for Ukrainian, English and Russian recipients.
+- Added a portable i18n CLI audit and multilingual QA documentation.

@@ -104,3 +104,8 @@ $_['text_purchase_block_choose_form'] = '— Выберите созданную
 $_['text_separator'] = ' &gt; ';
 $_['error_meta_h1'] = 'HTML-тег H1 должен содержать от 0 до 255 символов!';
 $_['js_purchase_presets_json'] = '{}';
+
+// CodeCart PRO: aligned locale keys
+$_['entry_description_bottom'] = 'Описание внизу:';
+$_['help_keyword'] = 'Должен быть уникальным во всей системе, без пробелов и спецсимволов';
+$_['help_noindex'] = 'Индексация поисковыми системами Google, Yandex, Bing и др.';
