@@ -7,7 +7,7 @@ $_['text_type'] = 'Выберите тип расширения';
 $_['text_filter'] = 'Фильтр';
 
 // CodeCart PRO: sortable extension columns.
-$_['column_installed'] = 'Установка';
+$_['column_installed'] = 'Установлено';
 $_['column_install_date'] = 'Дата установки';
 $_['text_installed'] = 'Установлено';
 $_['text_not_installed'] = 'Не установлено';

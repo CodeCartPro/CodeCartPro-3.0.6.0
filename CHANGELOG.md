@@ -188,3 +188,11 @@ The recommended extension-compatibility target stated in the supplied documentat
 - Extensions: added an independent sortable Upload date column alongside Installation date in all 14 extension types.
 - Upload timestamp is linked only to a recorded installer package that supplied the extension controller file. Unknown historical dates remain unknown.
 - Added language labels in uk-ua, ru-ru and en-gb and extended extension sorting regression tests.
+
+## Build 2.2.6
+
+- Extensions: restored missing status cells in legacy rows so all 14 tables align correctly with their headers.
+- Fixed nonfunctional sorting: delegate header clicks at document level because extension lists load through AJAX after the script initializes.
+- All five sortable headings now display full localized labels and sort directions, including after an AJAX refresh; grouped module/store rows stay together.
+- Fixed 6/7/8-column widths, fixed table layout and mobile-only horizontal table scrolling without widening the admin page.
+- Existing unknown historical upload/install dates remain unknown rather than being fabricated. Updated automated extension-table regression checks.

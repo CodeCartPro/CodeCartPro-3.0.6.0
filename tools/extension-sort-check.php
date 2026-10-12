@@ -23,9 +23,18 @@ foreach ($types as $type) {
         $errors[] = $type . ': fewer than three sort choices';
     }
     if (preg_match('/<thead>(.*?)<\/thead>/s', $twig, $header)) {
-        $columns = substr_count($header[1], '<td');
+        $columns = substr_count($header[1], '<th ');
         if (preg_match('/colspan="(\d+)"\s*>\{\{ text_no_results/', $twig, $match) && (int)$match[1] !== $columns) {
             $errors[] = $type . ': empty-state columns differ from table header';
+        }
+        if ($columns < 6 || $columns > 8 || strpos($twig, 'ccp-extension-cols-' . $columns) === false) {
+            $errors[] = $type . ': expected 6-8 explicit semantic headers and matching width class';
+        }
+        if (preg_match('/<tr class="ccp-extension-main"[^>]*>(.*?)<\/tr>/s', $twig, $first_row)) {
+            $cells = substr_count($first_row[1], '<td');
+            if ($cells !== $columns || strpos($first_row[1], 'colspan="2"') !== false) {
+                $errors[] = $type . ': main row does not align with header columns';
+            }
         }
     }
 }
@@ -38,6 +47,15 @@ foreach (array('uk-ua', 'ru-ru', 'en-gb') as $locale) {
             $errors[] = $locale . ': missing ' . $key;
         }
     }
+}
+
+$sortScript = file_get_contents($root . '/upload/admin/view/javascript/codecart-extension-sort.js');
+if (strpos($sortScript, "$(document).on('click.ccpExtensionSort'") === false || strpos($sortScript, 'appendChild(fragment)') === false) {
+    $errors[] = 'sorting handler is not delegated to support AJAX-loaded extension tables';
+}
+$parentView = file_get_contents($root . '/upload/admin/view/template/marketplace/extension.twig');
+if (strpos($parentView, '#extension fieldset { min-width: 0;') === false || strpos($parentView, 'table-layout: fixed') === false) {
+    $errors[] = 'extensions page missing responsive fixed-width table layout';
 }
 
 $model = file_get_contents($root . '/upload/admin/model/setting/extension.php');

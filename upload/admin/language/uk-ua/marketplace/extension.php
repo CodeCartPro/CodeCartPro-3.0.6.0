@@ -9,7 +9,7 @@ $_['text_list']     = 'Список доповнень';
 $_['text_type']     = 'Оберіть тип доповнення';
 $_['text_filter']   = 'Фільтр';
 // CodeCart PRO: sortable extension columns.
-$_['column_installed'] = 'Встановлення';
+$_['column_installed'] = 'Встановлено';
 $_['column_install_date'] = 'Дата встановлення';
 $_['text_installed'] = 'Встановлено';
 $_['text_not_installed'] = 'Не встановлено';

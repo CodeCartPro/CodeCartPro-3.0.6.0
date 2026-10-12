@@ -15,3 +15,11 @@ The **Upload date** is the timestamp of the latest installer package upload reco
 The **Installation date** is when the extension was enabled through the Extensions list (recorded separately in `setting` for new installations). Uploading a ZIP does not imply the extension was installed or enabled. Re-uploading a ZIP changes only the upload history; reinstalling a module changes its recorded installation date.
 
 Legacy/built-in modules, FTP uploads and packages without an exact controller path have an unknown upload date. Old module installations from before tracking also have unknown installation dates. Unknown dates always sort after recorded dates.
+
+## Column alignment and AJAX sorting (2.2.6)
+
+The extension lists use six, seven or eight physical columns depending on the type. Header cells and body rows have matching geometry, including tables with a sort-order/width/link column. The first column holds the full module name; the action column is kept compact; dates stay legible and centered. When the viewport is narrower than the table's minimum readable width, horizontal scrolling remains inside the table area, not on the whole admin page.
+
+The sort handler is delegated to `document`, because the `#extension` fragment is loaded and replaced by AJAX after the JavaScript bundle runs. Click a heading to sort, click again to reverse; unknown dates always remain last. Child module/store rows always travel with their parent. Installing, uninstalling or switching extension types preserves the chosen sort per type. Missing historical installation/upload timestamps remain `—`, not fabricated dates.
+
+Verification: `php tools/extension-sort-check.php`, plus browser tests for six-, seven- and eight-column lists on desktop and narrow/mobile widths.

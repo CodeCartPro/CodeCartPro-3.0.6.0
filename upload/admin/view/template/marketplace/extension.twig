@@ -12,8 +12,48 @@ html.ccp-admin-dark #extension .ccp-extension-table thead td { background: #1d29
 html.ccp-admin-dark #extension .ccp-extension-table .ccp-extension-sort { color: #9fcaff; }
 html.ccp-admin-dark #extension .ccp-extension-table .ccp-extension-child td { background: #1b2632; }
 html.ccp-admin-dark #extension .ccp-extension-table .text-muted { color: #a1b0c0; }
+
+/* Stable column geometry for 6/7/8-column extension lists, including mobile. */
+#extension { min-width: 0; max-width: 100%; }
+#extension fieldset { min-width: 0; max-width: 100%; }
+#extension .table-responsive { min-width: 0; width: 100%; max-width: 100%; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+#extension .ccp-extension-table { width: 100%; min-width: 1100px; table-layout: fixed; margin-bottom: 0; }
+#extension .ccp-extension-cols-7 { min-width: 1200px; }
+#extension .ccp-extension-cols-8 { min-width: 1320px; }
+#extension .ccp-extension-table thead th { background: #f8fbff; border-right: 1px solid #d9e1ed; vertical-align: middle; font-weight: 600; padding: 9px 10px; white-space: normal; overflow: hidden; }
+#extension .ccp-extension-table thead th:last-child { text-align: right; }
+#extension .ccp-extension-table thead th .ccp-extension-sort { display: inline-flex; align-items: center; justify-content: flex-start; gap: 5px; width: 100%; min-width: 0; white-space: normal; text-align: left; line-height: 1.35; }
+#extension .ccp-extension-table .ccp-extension-sort-label { display: inline; flex: 0 1 auto; }
+#extension .ccp-extension-table .ccp-extension-sort i { margin-left: 0; flex: 0 0 auto; }
+#extension .ccp-extension-table tbody td { vertical-align: middle; overflow: hidden; text-overflow: ellipsis; }
+#extension .ccp-extension-table tbody td:first-child { overflow-wrap: anywhere; }
+#extension .ccp-extension-table tbody .ccp-extension-date { white-space: nowrap; font-variant-numeric: tabular-nums; }
+#extension .ccp-extension-table tbody td:last-child { white-space: nowrap; text-align: right; overflow: visible; }
+#extension .ccp-extension-table tbody td:last-child .btn { margin: 0 1px; }
+#extension .ccp-extension-cols-6 th:nth-child(1) { width: 39%; }
+#extension .ccp-extension-cols-6 th:nth-child(2) { width: 12%; }
+#extension .ccp-extension-cols-6 th:nth-child(3) { width: 13%; }
+#extension .ccp-extension-cols-6 th:nth-child(4) { width: 13%; }
+#extension .ccp-extension-cols-6 th:nth-child(5) { width: 13%; }
+#extension .ccp-extension-cols-6 th:nth-child(6) { width: 10%; }
+#extension .ccp-extension-cols-7 th:nth-child(1) { width: 33%; }
+#extension .ccp-extension-cols-7 th:nth-child(2) { width: 12%; }
+#extension .ccp-extension-cols-7 th:nth-child(3) { width: 8%; }
+#extension .ccp-extension-cols-7 th:nth-child(4) { width: 12%; }
+#extension .ccp-extension-cols-7 th:nth-child(5) { width: 13%; }
+#extension .ccp-extension-cols-7 th:nth-child(6) { width: 13%; }
+#extension .ccp-extension-cols-7 th:nth-child(7) { width: 9%; }
+#extension .ccp-extension-cols-8 th:nth-child(1) { width: 29%; }
+#extension .ccp-extension-cols-8 th:nth-child(2) { width: 8%; }
+#extension .ccp-extension-cols-8 th:nth-child(3) { width: 11%; }
+#extension .ccp-extension-cols-8 th:nth-child(4) { width: 7%; }
+#extension .ccp-extension-cols-8 th:nth-child(5) { width: 12%; }
+#extension .ccp-extension-cols-8 th:nth-child(6) { width: 12%; }
+#extension .ccp-extension-cols-8 th:nth-child(7) { width: 12%; }
+#extension .ccp-extension-cols-8 th:nth-child(8) { width: 9%; }
+html.ccp-admin-dark #extension .ccp-extension-table thead th { background: #1d2936; border-right-color: #384757; }
 </style>
-<script src="view/javascript/codecart-extension-sort.js?v=3.0.6.0-225"></script>
+<script src="view/javascript/codecart-extension-sort.js?v=3.0.6.0-226"></script>
 <div id="content">
   <div class="page-header">
     <div class="container-fluid">
