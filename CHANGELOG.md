@@ -162,3 +162,9 @@ The recommended extension-compatibility target stated in the supplied documentat
 - Added an Archived filter for dismissed notifications and preserved resolved notification history instead of silently deleting it.
 - Removed automatic 30-day notification history purge from the security cron task.
 - Added localized session-expired errors for notifications on all three supported languages.
+
+## Build 2.2.2 — Integrity status localization and manifest coverage
+
+- Translate file integrity states in the Store Health dashboard into Ukrainian, Russian, and English without changing machine-readable state codes.
+- Verify all previously monitored Core file hashes against the complete packaged release and extend coverage to first-party authentication, SEO language, notification, file manager, dashboard and CodeCart library components.
+- Align the manifest version with the official 3.0.6.0 release and add read-only CLI manifest validation and documentation; existing security checks, license rules, and site data remain unchanged.
