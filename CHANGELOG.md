@@ -196,3 +196,11 @@ The recommended extension-compatibility target stated in the supplied documentat
 - All five sortable headings now display full localized labels and sort directions, including after an AJAX refresh; grouped module/store rows stay together.
 - Fixed 6/7/8-column widths, fixed table layout and mobile-only horizontal table scrolling without widening the admin page.
 - Existing unknown historical upload/install dates remain unknown rather than being fabricated. Updated automated extension-table regression checks.
+
+## Build 2.2.7 — Extensions layout and alignment
+
+- Fixed the original admin-sidebar overlap: Styles and scripts previously placed between `#column-left` and `#content` broke the core adjacent-sibling layout selector. These now reside inside `#content`, preserving the standard admin layout.
+- Normalized extension table columns: module name left; status, installed, upload/install dates centered; action heading and buttons aligned together in the center.
+- Removed the oversized fixed table minimum widths, using compact 6/7/8-column ratios and a horizontally scrollable table container on narrow screens.
+- Preserved all sorting handlers, AJAX reloads, nested module rows, dates, permissions and extension settings.
+- Added layout regression assertions to the extension sort QA test.

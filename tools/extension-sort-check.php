@@ -54,8 +54,24 @@ if (strpos($sortScript, "$(document).on('click.ccpExtensionSort'") === false || 
     $errors[] = 'sorting handler is not delegated to support AJAX-loaded extension tables';
 }
 $parentView = file_get_contents($root . '/upload/admin/view/template/marketplace/extension.twig');
-if (strpos($parentView, '#extension fieldset { min-width: 0;') === false || strpos($parentView, 'table-layout: fixed') === false) {
-    $errors[] = 'extensions page missing responsive fixed-width table layout';
+if (!preg_match('/\{\{\s*header\s*\}\}\s*\{\{\s*column_left\s*\}\}\s*<div id="content">/', $parentView)) {
+    $errors[] = 'sidebar and content are not adjacent: intervening script/style breaks native admin layout';
+}
+foreach (array('#extension .table-responsive', 'overflow-x:auto', 'table-layout:fixed', 'thead th:last-child', 'text-align:center', 'ccp-extension-cols-6', 'ccp-extension-cols-7', 'ccp-extension-cols-8') as $needle) {
+    if (strpos($parentView, $needle) === false) {
+        $errors[] = 'missing extension layout rule: ' . $needle;
+    }
+}
+foreach ($types as $type) {
+    $twig = file_get_contents($root . '/upload/admin/view/template/extension/extension/' . $type . '.twig');
+    if (!preg_match('/<th scope="col" class="text-center">\{\{ column_action \}\}<\/th>/', $twig)) {
+        $errors[] = $type . ': action label is not centered over its buttons';
+    }
+    foreach (array('status','upload','date') as $key) {
+        if (!preg_match('/<th scope="col" class="text-center"><button[^>]*data-ccp-sort="' . $key . '"/', $twig)) {
+            $errors[] = $type . ': heading ' . $key . ' not centered';
+        }
+    }
 }
 
 $model = file_get_contents($root . '/upload/admin/model/setting/extension.php');
