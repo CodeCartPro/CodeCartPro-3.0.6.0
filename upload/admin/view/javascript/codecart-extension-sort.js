@@ -36,7 +36,7 @@
             var result = 0;
 
             // Unknown installation dates always stay after known dates.
-            if (sort.key === 'date' && (!left || !right)) {
+            if ((sort.key === 'date' || sort.key === 'upload') && (!left || !right)) {
                 result = left ? -1 : (right ? 1 : 0);
                 if (result) {
                     return result;
@@ -72,7 +72,7 @@
         var type = currentType();
         var key = $(this).attr('data-ccp-sort');
         var prior = sortByType[type];
-        var firstDirection = (key === 'date' || key === 'installed') ? -1 : 1;
+        var firstDirection = (key === 'date' || key === 'upload' || key === 'installed') ? -1 : 1;
 
         sortByType[type] = {
             key: key,

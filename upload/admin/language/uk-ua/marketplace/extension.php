@@ -16,3 +16,6 @@ $_['text_not_installed'] = 'Не встановлено';
 $_['text_date_unknown'] = 'Дата невідома';
 $_['text_sort_ascending'] = 'Сортувати за зростанням';
 $_['text_sort_descending'] = 'Сортувати за спаданням';
+
+$_['column_upload_date'] = 'Дата завантаження';
+$_['text_upload_date_unknown'] = 'Дата завантаження невідома';

@@ -15,3 +15,6 @@ $_['text_not_installed'] = 'Not installed';
 $_['text_date_unknown'] = 'Date unknown';
 $_['text_sort_ascending'] = 'Sort ascending';
 $_['text_sort_descending'] = 'Sort descending';
+
+$_['column_upload_date'] = 'Upload date';
+$_['text_upload_date_unknown'] = 'No recorded upload date';

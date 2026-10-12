@@ -182,3 +182,9 @@ The recommended extension-compatibility target stated in the supplied documentat
 - Added client-side sorting for all extension categories by name, status, installation status and installation date.
 - Extension install date is now recorded on new installations without changing database schema; historical dates are not invented.
 - Preserved nested module/store instances and AJAX refresh behavior; added Ukrainian, English and Russian labels.
+
+## Build 2.2.5
+
+- Extensions: added an independent sortable Upload date column alongside Installation date in all 14 extension types.
+- Upload timestamp is linked only to a recorded installer package that supplied the extension controller file. Unknown historical dates remain unknown.
+- Added language labels in uk-ua, ru-ru and en-gb and extended extension sorting regression tests.
