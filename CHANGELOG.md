@@ -176,3 +176,9 @@ The recommended extension-compatibility target stated in the supplied documentat
 - Removed a hardcoded English clipboard fallback prompt in the public document list; it now reuses the translated button title.
 - Added a read-only, tri-language coverage check for shared dictionaries, value shapes, format specifiers and static language-file references in installer, admin and catalog.
 - Kept legacy language packs for optional extensions unchanged except for applicable existing label translations; no executable routes, data or application permissions were changed.
+
+## Build 2.2.4
+
+- Added client-side sorting for all extension categories by name, status, installation status and installation date.
+- Extension install date is now recorded on new installations without changing database schema; historical dates are not invented.
+- Preserved nested module/store instances and AJAX refresh behavior; added Ukrainian, English and Russian labels.

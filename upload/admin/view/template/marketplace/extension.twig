@@ -1,4 +1,19 @@
 {{ header }}{{ column_left }}
+<style>
+#extension .ccp-extension-table thead { border-top: 3px solid #0057d9; }
+#extension .ccp-extension-table thead td { background: #f8fbff; border-right: 1px solid #d9e1ed; vertical-align: middle; }
+#extension .ccp-extension-table .ccp-extension-sort { border: 0; background: transparent; color: #1457a7; padding: 4px 2px; font: inherit; font-weight: 600; text-align: left; cursor: pointer; white-space: nowrap; }
+#extension .ccp-extension-table .ccp-extension-sort:hover,#extension .ccp-extension-table .ccp-extension-sort:focus { color: #00449f; text-decoration: underline; }
+#extension .ccp-extension-table .ccp-extension-sort i { margin-left: 4px; opacity: .75; }
+#extension .ccp-extension-table .ccp-extension-main td { vertical-align: middle; }
+#extension .ccp-extension-table .ccp-extension-child td { background: #f7f9fc; }
+#extension .ccp-extension-table .ccp-extension-main td:last-child { white-space: nowrap; }
+html.ccp-admin-dark #extension .ccp-extension-table thead td { background: #1d2936; border-right-color: #384757; }
+html.ccp-admin-dark #extension .ccp-extension-table .ccp-extension-sort { color: #9fcaff; }
+html.ccp-admin-dark #extension .ccp-extension-table .ccp-extension-child td { background: #1b2632; }
+html.ccp-admin-dark #extension .ccp-extension-table .text-muted { color: #a1b0c0; }
+</style>
+<script src="view/javascript/codecart-extension-sort.js?v=3.0.6.0-224"></script>
 <div id="content">
   <div class="page-header">
     <div class="container-fluid">
@@ -55,6 +70,7 @@ $('select[name="type"]').on('change', function() {
 		},
 		success: function(html) {
 			$('#extension').html(html);
+            if (window.CodeCartExtensionSort) { window.CodeCartExtensionSort.apply(); }
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
 			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -80,6 +96,7 @@ $('#extension').on('click', '.btn-success', function(e) {
 		},
 		success: function(html) {
 			$('#extension').html(html);
+            if (window.CodeCartExtensionSort) { window.CodeCartExtensionSort.apply(); }
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
 			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);

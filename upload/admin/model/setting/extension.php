@@ -12,17 +12,45 @@ class ModelSettingExtension extends Model {
 		return $extension_data;
 	}
 
+	/**
+	 * Recorded installation timestamps, keyed by extension code.
+	 * No date is backfilled for extensions installed before tracking started.
+	 */
+	public function getInstallDates($type) {
+		$prefix = 'installed_at_' . $type . '_';
+		$dates = array();
+		$query = $this->db->query("SELECT `key`, `value` FROM `" . DB_PREFIX . "setting` WHERE `store_id` = 0 AND `code` = 'codecart_extension_install'");
+
+		foreach ($query->rows as $row) {
+			if (strpos($row['key'], $prefix) !== 0) {
+				continue;
+			}
+
+			$code = substr($row['key'], strlen($prefix));
+			$dates[$code] = $row['value'];
+		}
+
+		return $dates;
+	}
+
 	public function install($type, $code) {
 		$extensions = $this->getInstalled($type);
 
 		if (!in_array($code, $extensions)) {
 			$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` SET `type` = '" . $this->db->escape($type) . "', `code` = '" . $this->db->escape($code) . "'");
+
+			// Installation dates are tracked only for new installations. Existing
+			// extensions cannot be assigned a trustworthy historical date.
+			$key = 'installed_at_' . $type . '_' . $code;
+			$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `store_id` = 0 AND `code` = 'codecart_extension_install' AND `key` = '" . $this->db->escape($key) . "'");
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "setting` SET `store_id` = 0, `code` = 'codecart_extension_install', `key` = '" . $this->db->escape($key) . "', `value` = NOW(), `serialized` = 0");
 		}
 	}
 
 	public function uninstall($type, $code) {
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "extension` WHERE `type` = '" . $this->db->escape($type) . "' AND `code` = '" . $this->db->escape($code) . "'");
 		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `code` = '" . $this->db->escape($type . '_' . $code) . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "setting` WHERE `store_id` = 0 AND `code` = 'codecart_extension_install' AND `key` = '" . $this->db->escape('installed_at_' . $type . '_' . $code) . "'");
 	}	
 
 	public function addExtensionInstall($filename, $extension_download_id = 0) {
