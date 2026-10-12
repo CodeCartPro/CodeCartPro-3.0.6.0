@@ -168,3 +168,11 @@ The recommended extension-compatibility target stated in the supplied documentat
 - Translate file integrity states in the Store Health dashboard into Ukrainian, Russian, and English without changing machine-readable state codes.
 - Verify all previously monitored Core file hashes against the complete packaged release and extend coverage to first-party authentication, SEO language, notification, file manager, dashboard and CodeCart library components.
 - Align the manifest version with the official 3.0.6.0 release and add read-only CLI manifest validation and documentation; existing security checks, license rules, and site data remain unchanged.
+
+## Build 2.2.3 — Language resource cleanup
+
+- Localized remaining confirmed user-facing English labels in Ukrainian and Russian admin language resources for shipping/API settings, Google login, currency sources, notifications, storefront health, relation scores and core diagnostics.
+- Corrected Russian inherited English strings in retained compatibility language files without renaming language keys or changing technical identifiers.
+- Removed a hardcoded English clipboard fallback prompt in the public document list; it now reuses the translated button title.
+- Added a read-only, tri-language coverage check for shared dictionaries, value shapes, format specifiers and static language-file references in installer, admin and catalog.
+- Kept legacy language packs for optional extensions unchanged except for applicable existing label translations; no executable routes, data or application permissions were changed.

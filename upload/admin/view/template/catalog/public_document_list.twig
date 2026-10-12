@@ -55,7 +55,7 @@
                     <td class="text-right">
                       <div style="display:inline-flex;gap:4px;white-space:nowrap;">
                         {% if item.status %}
-                          <button type="button" class="btn btn-default btn-sm" title="{{ button_copy }}" data-url="{{ item.href }}" onclick="if(navigator.clipboard){navigator.clipboard.writeText(this.getAttribute('data-url'));}else{window.prompt('Copy link:',this.getAttribute('data-url'));}"><i class="fa fa-copy"></i></button>
+                          <button type="button" class="btn btn-default btn-sm" title="{{ button_copy }}" data-url="{{ item.href }}" onclick="if(navigator.clipboard){navigator.clipboard.writeText(this.getAttribute('data-url'));}else{window.prompt(this.getAttribute('title'),this.getAttribute('data-url'));}"><i class="fa fa-copy"></i></button>
                         {% endif %}
                         <a class="btn btn-primary btn-sm" title="{{ button_edit }}" href="{{ item.edit }}"><i class="fa fa-pencil"></i></a>
                       </div>

@@ -1,6 +1,6 @@
 <?php
 // CodeCart PRO ru-ru language pack. Missing keys fall back to en-gb.
-$_['heading_title'] = 'APIs';
+$_['heading_title'] = 'API';
 $_['text_success'] = 'Настройки успешно изменены!';
 $_['text_list'] = 'Список API';
 $_['text_add'] = 'Добавить';

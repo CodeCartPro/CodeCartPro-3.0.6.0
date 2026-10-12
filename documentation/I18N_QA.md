@@ -7,6 +7,7 @@ CodeCart uses active OpenCart/ocStore language directories `uk-ua`, `en-gb` and 
 From the project root run:
 
     php tools/i18n-check.php
+    php tools/i18n-coverage-check.php
 
 The command checks UTF-8 encoding and BOM in language files and compares active controller language files with the Ukrainian reference. For every active route it checks that the English and Russian files exist, that each key exists and retains its value type (string/array), and that string formatting parameters such as `%s`, `%d`, and positional `%1$s` match. A failure exits with code 1.
 
@@ -23,3 +24,9 @@ Use identical keys for all supported locales, with the same PHP value types and 
 ## Audit scope
 
 The audit does not prove how a translated screen appears in the browser or catch every hardcoded text fragment in optional JavaScript and external libraries. Verify dynamic widgets, checkout, emails, SEO and installed third-party themes on staging, in each active language, before publishing a production update.
+
+## Additional source and key parity check
+
+Run `php tools/i18n-coverage-check.php` after any localization change. It checks file/key symmetry for all resources present in all three languages, including non-controller common resources and value-array shapes, and verifies statically referenced language files in controller source. It deliberately reports older locale-only resources without any executable controller separately rather than creating fabricated translations for removed extensions.
+
+User-facing labels are translated; protocol names, technology trademarks, API identifiers, file paths, routes, option codes and formatting parameters are not translated. A shared-language-key test cannot confirm all client-side dynamic texts or third-party extensions; runtime checks remain necessary.
