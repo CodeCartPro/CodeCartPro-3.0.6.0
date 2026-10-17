@@ -38,7 +38,7 @@ The platform is intended for store owners, merchants, agencies and developers wh
 
 ## System requirements and compatibility
 
-CodeCart uses PHP and MySQL/MariaDB, with a modern web server such as Apache or nginx. **PHP 8.1–8.3 is recommended for broad third-party OpenCart/ocStore extension compatibility.** Core CI and compatibility checks cover PHP 8.4/8.5, but not every commercial module or encoded third-party theme. See [platform requirements](documentation/INSTALL.md), [compatibility](documentation/COMPATIBILITY.md) and [UniShop2 notes](documentation/UNISHOP2_COMPATIBILITY.md).
+CodeCart uses PHP and MySQL/MariaDB, with a modern web server such as Apache or nginx. **PHP 8.1–8.3 is recommended for broad third-party OpenCart/ocStore extension compatibility.** Core CI and compatibility checks cover PHP 8.4/8.5, but not every commercial module or encoded third-party theme. See [platform requirements](documentation/INSTALL.md), [compatibility](documentation/COMPATIBILITY.md) .
 
 A clean installation enables CodeCart Theme. Updating an existing store preserves the installed stores' selected theme and settings; test custom themes, modifications and integrations on staging before a production upgrade.
 
